@@ -1,110 +1,527 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>AmoreItalia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMOREITALIA</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
-body{background:#f0f2f5;display:flex;justify-content:center;height:100dvh;overflow:hidden}
-.app{width:100%;max-width:450px;background:#fff;height:100dvh;display:flex;flex-direction:column;position:relative}
-#auth{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#ff4b6e,#ff758c);z-index:99;display:flex;justify-content:center;align-items:center;padding:20px}
-.box{background:#fff;padding:25px;border-radius:20px;width:100%;max-width:350px;text-align:center;box-shadow:0 10px 25px rgba(0,0,0,0.2)}
-.box h2{color:#ff4b6e;margin-bottom:10px}
-input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ddd;border-radius:10px;font-size:15px}
-.btn{background:#ff4b6e;color:#fff;border:none;padding:12px;border-radius:25px;font-size:16px;font-weight:bold;width:100%;margin-top:10px;cursor:pointer}
-.hdr{padding:15px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee}
-.logo{font-size:20px;font-weight:800;color:#ff4b6e}
-.main{flex:1;padding:12px;display:flex;flex-direction:column;overflow-y:auto}
-.card{flex:1;border-radius:20px;background-color:#e9ecef;background-size:cover;background-position:center;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,0.15)}
-.ov{background:linear-gradient(to top,rgba(0,0,0,0.85),transparent);padding:20px;color:#fff}
-.acts{display:flex;justify-content:center;gap:25px;padding:15px 0}
-.act{width:60px;height:60px;border-radius:50%;border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.15)}
-.ad{background:#f8f9fa;min-height:55px;display:flex;justify-content:center;align-items:center;border-top:1px solid #eee;font-size:12px;color:#999}
-.nav{display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #eee;background:#fff}
-.ni{font-size:13px;color:#888;text-align:center;cursor:pointer}
-.ni.on{color:#ff4b6e;font-weight:bold}
-.sec{display:none;flex:1;flex-direction:column}
-.sec.on{display:flex}
-.msg{padding:10px 14px;border-radius:15px;margin:5px 0;max-width:80%;font-size:14px}
-.me{background:#ff4b6e;color:#fff;align-self:flex-end}
-.th{background:#eee;color:#333;align-self:flex-start}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  width: 100%;
+  max-width: 420px;
+  min-height: 100vh;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.header {
+  background: #ff4b6e;
+  color: white;
+  padding: 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.lang {
+  background: white;
+  color: #ff4b6e;
+  border: none;
+  padding: 7px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.main {
+  flex: 1;
+  padding: 15px;
+  padding-bottom: 85px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 12px #00000012;
+  text-align: center;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #ffe3e8;
+  color: #ff4b6e;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  font-weight: bold;
+}
+
+.btn {
+  background: #ff4b6e;
+  color: white;
+  border: none;
+  padding: 13px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.btn-sec {
+  background: #eee;
+  color: #333;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.row .btn {
+  flex: 1;
+}
+
+input, select {
+  width: 100%;
+  padding: 13px;
+  margin: 7px 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.sec {
+  display: none;
+}
+
+.sec.active {
+  display: block;
+}
+
+.nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  background: white;
+  border-top: 1px solid #eee;
+  z-index: 10;
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 14px 3px;
+  border: none;
+  background: white;
+  color: #777;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.nav-btn.on {
+  color: #ff4b6e;
+  border-top: 3px solid #ff4b6e;
+}
+
+.chat-box {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.msg {
+  background: #ff4b6e;
+  color: white;
+  padding: 10px;
+  border-radius: 12px;
+  margin: 7px 0 7px auto;
+  max-width: 80%;
+  overflow-wrap: anywhere;
+}
+
+.msg.in {
+  background: #eee;
+  color: #222;
+  margin-left: 0;
+}
+
+.small {
+  color: #777;
+  font-size: 13px;
+  margin-top: 10px;
+}
 </style>
 </head>
+
 <body>
+
 <div class="app">
-  <div id="auth">
-    <div class="box">
-      <h2>🔥 AmoreItalia</h2>
-      <p style="font-size:13px;color:#666;margin-bottom:10px">Incontra persone in tutta Italia</p>
-      <input type="text" id="rName" placeholder="Il tuo Nome">
-      <input type="number" id="rAge" placeholder="Età (es. 25)">
-      <select id="rCity"><option>Roma</option><option>Milano</option><option>Napoli</option><option>Torino</option></select>
-      <button type="button" class="btn" onclick="startApp()">Entra Ora ❤</button>
-    </div>
+
+<header class="header">
+  <div class="logo">❤️ AMOREITALIA</div>
+  <button class="lang" onclick="changeLang()" id="langBtn">
+    IT / AL
+  </button>
+</header>
+
+<main class="main">
+
+<!-- DISCOVER -->
+<section id="s1" class="sec active">
+  <div class="card">
+    <h3 id="discoverTitle">🔥 Scopri nuove persone</h3>
   </div>
-  <div class="hdr"><div class="logo">🔥 AmoreItalia</div><span id="uBadge" style="font-size:12px;color:#666"></span></div>
-  <div id="s1" class="main sec on">
-    <div class="card" id="pCard"><div class="ov"><h2 id="pName">Giulia, 25</h2><p id="pCity">📍 Roma</p></div></div>
-    <div class="acts">
-      <button class="act" style="background:#fff;color:#ff4b6e" onclick="nextP(false)">✖</button>
-      <button class="act" style="background:#ff4b6e;color:#fff" onclick="nextP(true)">❤</button>
-    </div>
+  <div class="card" id="pCard"></div>
+</section>
+
+<!-- CHAT -->
+<section id="s2" class="sec">
+  <div class="card">
+    <h3 id="chatTitle">💬 I tuoi messaggi</h3>
+    <div id="cBox" class="chat-box"></div>
+    <input id="mIn" type="text"
+      placeholder="Scrivi un messaggio..."
+      maxlength="1000">
+    <button class="btn" onclick="sendMsg()" id="sendBtn">
+      Invia
+    </button>
   </div>
-  <div id="s2" class="main sec">
-    <h3 style="margin-bottom:10px">Chat</h3>
-    <div id="cBox" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;padding:10px 0">
-      <div class="msg th">Ciao! Benvenuto su AmoreItalia 😊</div>
-    </div>
-    <div style="display:flex;gap:5px"><input id="cIn" placeholder="Scrivi..."><button class="btn" style="width:auto;margin:0;padding:0 18px" onclick="sendM()">Invia</button></div>
+</section>
+
+<!-- PROFILE -->
+<section id="s3" class="sec">
+  <div class="card">
+    <h3 id="profileTitle">👤 Il tuo profilo</h3>
+
+    <input id="uName" placeholder="Il tuo nome"
+      maxlength="40">
+
+    <input id="uCity" placeholder="La tua città"
+      maxlength="60">
+
+    <input id="uAge" type="number"
+      placeholder="La tua età (18+)"
+      min="18" max="99">
+
+    <select id="uGender">
+      <option value="Donna">Donna</option>
+      <option value="Uomo">Uomo</option>
+    </select>
+
+    <button class="btn" onclick="saveProf()" id="saveBtn">
+      Salva profilo
+    </button>
+
+    <p class="small" id="profileStatus"></p>
   </div>
-  <div class="ad">
-    <!-- Vendosni këtu kodin e plotë të reklamës (me linkun .js të saktë) -->
-    <span>Spazio Pubblicitario</span>
-  </div>
-  <div class="nav">
-    <div class="ni on" onclick="tab(1,this)">🔥 Scopri</div>
-    <div class="ni" onclick="tab(2,this)">💬 Chat</div>
-  </div>
+</section>
+
+</main>
+
+<!-- MENU -->
+<nav class="nav">
+  <button class="nav-btn on" onclick="tab(1,this)" id="nav1">
+    🔥 Scopri
+  </button>
+  <button class="nav-btn" onclick="tab(2,this)" id="nav2">
+    💬 Chat
+  </button>
+  <button class="nav-btn" onclick="tab(3,this)" id="nav3">
+    👤 Profilo
+  </button>
+</nav>
+
 </div>
+
 <script>
-const list=[
-  {n:"Giulia, 25",c:"📍 Roma",i:"https://unsplash.com"},
-  {n:"Marco, 29",c:"📍 Milano",i:"https://unsplash.com"},
-  {n:"Sofia, 23",c:"📍 Napoli",i:"https://unsplash.com"},
-  {n:"Alessandro, 31",c:"📍 Torino",i:"https://unsplash.com"}
-];
-let idx=0;
-function startApp(){
-  const n=document.getElementById('rName').value||'Ospite';
-  const c=document.getElementById('rCity').value;
-  document.getElementById('uBadge').innerText=n+' • '+c;
-  document.getElementById('auth').style.display='none';
+
+// LANGUAGE
+let language = localStorage.getItem("amore_lang") || "it";
+
+const translations = {
+  it: {
+    discover:"🔥 Scopri nuove persone",
+    chat:"💬 I tuoi messaggi",
+    profile:"👤 Il tuo profilo",
+    send:"Invia",
+    save:"Salva profilo",
+    name:"Il tuo nome",
+    city:"La tua città",
+    age:"La tua età (18+)",
+    message:"Scrivi un messaggio...",
+    like:"❤️ Mi piace",
+    pass:"❌ Passa",
+    empty:"Non ci sono altri profili!",
+    saved:"Profilo salvato!",
+    required:"Inserisci tutti i dati correttamente.",
+    nav:["🔥 Scopri","💬 Chat","👤 Profilo"],
+    gender:["Donna","Uomo"]
+  },
+  al: {
+    discover:"🔥 Zbulo njerëz të rinj",
+    chat:"💬 Mesazhet e tua",
+    profile:"👤 Profili yt",
+    send:"Dërgo",
+    save:"Ruaj profilin",
+    name:"Emri yt",
+    city:"Qyteti yt",
+    age:"Mosha jote (18+)",
+    message:"Shkruaj një mesazh...",
+    like:"❤️ Më pëlqen",
+    pass:"❌ Kalo",
+    empty:"Nuk ka profile të tjera!",
+    saved:"Profili u ruajt!",
+    required:"Plotëso të gjitha të dhënat saktë.",
+    nav:["🔥 Zbulo","💬 Chat","👤 Profili"],
+    gender:["Femër","Mashkull"]
+  }
+};
+
+function changeLang() {
+  language = language === "it" ? "al" : "it";
+  localStorage.setItem("amore_lang", language);
+  updateLanguage();
   showP();
 }
-function showP(){
-  if(idx>=list.length)idx=0;
-  document.getElementById('pCard').style.backgroundImage="url('"+list[idx].i+"')";
-  document.getElementById('pName').innerText=list[idx].n;
-  document.getElementById('pCity').innerText=list[idx].c;
+
+function updateLanguage() {
+  const t = translations[language];
+
+  document.getElementById("discoverTitle").textContent = t.discover;
+  document.getElementById("chatTitle").textContent = t.chat;
+  document.getElementById("profileTitle").textContent = t.profile;
+  document.getElementById("sendBtn").textContent = t.send;
+  document.getElementById("saveBtn").textContent = t.save;
+
+  document.getElementById("uName").placeholder = t.name;
+  document.getElementById("uCity").placeholder = t.city;
+  document.getElementById("uAge").placeholder = t.age;
+  document.getElementById("mIn").placeholder = t.message;
+
+  document.getElementById("nav1").textContent = t.nav[0];
+  document.getElementById("nav2").textContent = t.nav[1];
+  document.getElementById("nav3").textContent = t.nav[2];
+
+  const gender = document.getElementById("uGender");
+  gender.options[0].textContent = t.gender[0];
+  gender.options[1].textContent = t.gender[1];
 }
-function nextP(like){
-  if(like)alert("🎉 Match con "+list[idx].n+"!");
-  idx++;showP();
+
+// SAMPLE PROFILES
+const profili = [
+  {
+    nome:"Sofia, 24",
+    citta:"Milano",
+    bio:"Amo viaggiare e il buon caffè ☕",
+    iniziale:"S"
+  },
+  {
+    nome:"Giulia, 26",
+    citta:"Roma",
+    bio:"Appassionata di arte e cinema 🎬",
+    iniziale:"G"
+  },
+  {
+    nome:"Chiara, 23",
+    citta:"Napoli",
+    bio:"Sempre sorridente e amante del mare 🌊",
+    iniziale:"C"
+  }
+];
+
+let idx = 0;
+
+// DISCOVER PROFILES
+function showP() {
+  const box = document.getElementById("pCard");
+  box.replaceChildren();
+
+  if (idx >= profili.length) {
+    const p = document.createElement("h3");
+    p.textContent = translations[language].empty;
+    box.appendChild(p);
+    return;
+  }
+
+  const p = profili[idx];
+  const avatar = document.createElement("div");
+  avatar.className = "avatar";
+  avatar.textContent = p.iniziale;
+
+  const name = document.createElement("h2");
+  name.textContent = p.nome;
+
+  const city = document.createElement("p");
+  city.style.color = "#ff4b6e";
+  city.textContent = "📍 " + p.citta;
+
+  const bio = document.createElement("p");
+  bio.style.margin = "12px 0";
+  bio.textContent = p.bio;
+
+  const row = document.createElement("div");
+  row.className = "row";
+
+  const pass = document.createElement("button");
+  pass.className = "btn btn-sec";
+  pass.textContent = translations[language].pass;
+  pass.onclick = nextP;
+
+  const like = document.createElement("button");
+  like.className = "btn";
+  like.textContent = translations[language].like;
+  like.onclick = likeP;
+
+  row.append(pass, like);
+  box.append(avatar, name, city, bio, row);
 }
-function sendM(){
-  const v=document.getElementById('cIn').value;
-  if(!v)return;
-  document.getElementById('cBox').innerHTML+='<div class="msg me">'+v+'</div>';
-  document.getElementById('cIn').value='';
+
+function nextP() {
+  idx++;
+  showP();
 }
-function tab(n,el){
-  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
-  document.querySelectorAll('.ni').forEach(i=>i.classList.remove('on'));
-  document.getElementById('s'+n).classList.add('on');
-  el.classList.add('on');
+
+function likeP() {
+  if (idx < profili.length) {
+    alert("❤️ " + profili[idx].nome);
+    nextP();
+  }
 }
+
+// NAVIGATION
+function tab(n, el) {
+  document.querySelectorAll(".sec").forEach(s => {
+    s.classList.remove("active");
+  });
+
+  document.querySelectorAll(".nav-btn").forEach(b => {
+    b.classList.remove("on");
+  });
+
+  document.getElementById("s" + n).classList.add("active");
+  el.classList.add("on");
+}
+
+// CHAT
+let messages = [];
+
+try {
+  messages = JSON.parse(localStorage.getItem("amore_messages") || "[]");
+  if (!Array.isArray(messages)) messages = [];
+} catch {
+  messages = [];
+}
+
+function renderMessages() {
+  const box = document.getElementById("cBox");
+  box.replaceChildren();
+
+  messages.forEach(m => {
+    const div = document.createElement("div");
+    div.className = m.incoming ? "msg in" : "msg";
+    div.textContent = m.text;
+    box.appendChild(div);
+  });
+
+  box.scrollTop = box.scrollHeight;
+}
+
+function sendMsg() {
+  const input = document.getElementById("mIn");
+  const txt = input.value.trim();
+
+  if (!txt) return;
+
+  messages.push({
+    text: txt,
+    incoming: false
+  });
+
+  localStorage.setItem("amore_messages", JSON.stringify(messages));
+
+  input.value = "";
+  renderMessages();
+}
+
+document.getElementById("mIn").addEventListener("keydown", e => {
+  if (e.key === "Enter") sendMsg();
+});
+
+// PROFILE
+function loadProfile() {
+  try {
+    const saved = JSON.parse(localStorage.getItem("amore_profile") || "null");
+    if (!saved) return;
+
+    document.getElementById("uName").value = saved.name || "";
+    document.getElementById("uCity").value = saved.city || "";
+    document.getElementById("uAge").value = saved.age || "";
+    document.getElementById("uGender").value = saved.gender || "Donna";
+  } catch {}
+}
+
+function saveProf() {
+  const name = document.getElementById("uName").value.trim();
+  const city = document.getElementById("uCity").value.trim();
+  const age = Number(document.getElementById("uAge").value);
+  const gender = document.getElementById("uGender").value;
+
+  if (!name || !city || !Number.isInteger(age) || age < 18 || age > 99) {
+    alert(translations[language].required);
+    return;
+  }
+
+  const profile = {name, city, age, gender};
+
+  localStorage.setItem("amore_profile", JSON.stringify(profile));
+
+  document.getElementById("profileStatus").textContent =
+    "❤️ " + translations[language].saved;
+
+  alert(translations[language].saved);
+}
+
+// START
+updateLanguage();
+loadProfile();
+renderMessages();
 showP();
+
 </script>
+
 </body>
 </html>
